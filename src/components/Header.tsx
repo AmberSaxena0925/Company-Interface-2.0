@@ -47,7 +47,6 @@ export default function Navigation() {
             </button>
           </div>
 
-          {/* Mobile Toggle */}
           <button
             className="md:hidden text-white"
             onClick={() => setIsOpen(!isOpen)}
@@ -56,7 +55,6 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-gray-800 pt-4">
             {[
@@ -91,7 +89,6 @@ export default function Navigation() {
         )}
       </div>
 
-      {/* Styles */}
       <style jsx>{`
         .nav-link {
           position: relative;
