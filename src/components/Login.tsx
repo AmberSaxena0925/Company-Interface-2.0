@@ -169,7 +169,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 : 'bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/30'
             }`}
           >
-            {loading ? 'Signing in…' : 'Sign In'}
+            {loading ? 'Signing in…' : 'Sign In'
           </button>
 
           <p className="text-center text-sm text-gray-400">
