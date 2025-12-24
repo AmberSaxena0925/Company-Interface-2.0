@@ -4,13 +4,13 @@ export default function Footer() {
   return (
     <footer id="contact" className="relative bg-gradient-to-b from-[#111111] to-[#0a0a0a] border-t border-gray-800 overflow-hidden">
       <div className="absolute bottom-0 left-0 right-0 text-[20vw] font-bold text-gray-900/20 text-center whitespace-nowrap pointer-events-none">
-        NEXATECH
+        FORGESURGE
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
-            <div className="text-white font-bold text-2xl mb-4">NEXATECH</div>
+            <div className="text-white font-bold text-2xl mb-4">FORGE SURGE</div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Building scalable digital solutions that drive growth. We turn your vision into reality with cutting-edge technology and proven expertise.
             </p>

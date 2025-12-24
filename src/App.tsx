@@ -1,4 +1,4 @@
-import Navigation from './components/Navigation';
+import Navigation from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Process from './components/Process';
