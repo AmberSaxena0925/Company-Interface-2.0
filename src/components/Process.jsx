@@ -5,25 +5,29 @@ const steps = [
     number: '01',
     icon: Search,
     title: 'Discovery & Strategy',
-    description: 'We analyze your goals, audience, and technical requirements to build a solid foundation.',
+    description:
+      'We analyze your goals, audience, and technical requirements to build a solid foundation.',
   },
   {
     number: '02',
     icon: Palette,
     title: 'Design & Architecture',
-    description: 'Creating intuitive UX/UI designs and scalable system architectures.',
+    description:
+      'Creating intuitive UX/UI designs and scalable system architectures.',
   },
   {
     number: '03',
     icon: Code,
     title: 'Development & Testing',
-    description: 'Building with best practices, conducting rigorous testing, and ensuring quality.',
+    description:
+      'Building with best practices, conducting rigorous testing, and ensuring quality.',
   },
   {
     number: '04',
     icon: Rocket,
     title: 'Launch & Scaling',
-    description: 'Smooth deployment, monitoring, and continuous optimization for growth.',
+    description:
+      'Smooth deployment, monitoring, and continuous optimization for growth.',
   },
 ];
 
@@ -46,6 +50,7 @@ export default function Process() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => {
               const Icon = step.icon;
+
               return (
                 <div key={index} className="relative">
                   <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-all duration-300 h-full">

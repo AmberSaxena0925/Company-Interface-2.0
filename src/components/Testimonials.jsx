@@ -3,19 +3,22 @@ import { useState } from 'react';
 
 const testimonials = [
   {
-    quote: "Working with this team transformed our business. They delivered a scalable platform that handles millions of users without breaking a sweat.",
+    quote:
+      "Working with this team transformed our business. They delivered a scalable platform that handles millions of users without breaking a sweat.",
     name: "Sarah Chen",
     title: "CEO, TechStart Inc",
     rating: 5,
   },
   {
-    quote: "Exceptional technical expertise combined with clear communication. They understood our vision and brought it to life beyond our expectations.",
+    quote:
+      "Exceptional technical expertise combined with clear communication. They understood our vision and brought it to life beyond our expectations.",
     name: "Michael Rodriguez",
     title: "CTO, DataFlow Solutions",
     rating: 5,
   },
   {
-    quote: "From concept to deployment, the process was seamless. Their attention to detail and commitment to quality is unmatched.",
+    quote:
+      "From concept to deployment, the process was seamless. Their attention to detail and commitment to quality is unmatched.",
     name: "Emily Watson",
     title: "Founder, CloudNest",
     rating: 5,
@@ -49,7 +52,12 @@ export default function Testimonials() {
           <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-gray-800 rounded-2xl p-12 md:p-16">
             <div className="flex gap-1 mb-8 justify-center">
               {[...Array(testimonials[current].rating)].map((_, i) => (
-                <Star key={i} size={20} fill="#3b82f6" className="text-blue-500" />
+                <Star
+                  key={i}
+                  size={20}
+                  fill="#3b82f6"
+                  className="text-blue-500"
+                />
               ))}
             </div>
 

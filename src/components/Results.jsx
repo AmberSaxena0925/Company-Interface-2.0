@@ -41,13 +41,14 @@ export default function Results() {
             Results That Speak for Themselves
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            We don't just deliver code — we deliver measurable impact.
+            We don’t just deliver code — we deliver measurable impact.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
+
             return (
               <div
                 key={index}
@@ -56,7 +57,7 @@ export default function Results() {
                   transform: `rotate(${index % 2 === 0 ? '-1deg' : '1deg'})`,
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
 
                 <div className="relative">
                   <div className="bg-blue-500/10 w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
