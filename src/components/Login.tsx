@@ -39,79 +39,90 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   const [errors, setErrors] = useState<LoginErrors>({});
   const [loading, setLoading] = useState(false);
 
+  /* ---------------------- Validation ---------------------- */
   const validateForm = (): boolean => {
     const newErrors: LoginErrors = {};
 
-    if (!formData.email) newErrors.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = 'Invalid email';
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Invalid email address';
+    }
 
-    if (!formData.password) newErrors.password = 'Password is required';
-    else if (formData.password.length < 6)
-      newErrors.password = 'Min 6 characters';
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Minimum 6 characters required';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  /* ---------------------- Submit ---------------------- */
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoading(true);
+
     try {
-      const res = await fetch(`${backendURL}/api/auth/login`, {
+      const response = await fetch(`${backendURL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await response.json();
+
+      if (!response.ok) {
         setErrors({ email: data.message || 'Invalid credentials' });
         return;
       }
 
       localStorage.setItem('token', data.token);
-
-      if (onLogin) onLogin(data.user);
+      onLogin?.(data.user);
 
       navigate('/contact');
     } catch {
-      setErrors({ email: 'Server error. Try later.' });
+      setErrors({ email: 'Server error. Please try again later.' });
     } finally {
       setLoading(false);
     }
   };
 
+  /* ---------------------- Input Change ---------------------- */
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((p) => ({ ...p, [name]: value }));
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     if (errors[name as keyof LoginErrors]) {
-      setErrors((p) => ({ ...p, [name]: undefined }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-[#0a0a0a] text-white overflow-hidden">
-      
-      {/* Watermark */}
+
+      {/* Background Watermark */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <span className="text-[6rem] md:text-[10rem] font-bold text-white/5 tracking-widest rotate-[180deg]">
           FORGE SURGE
         </span>
       </div>
 
-      {/* Card */}
+      {/* Login Card */}
       <div className="relative z-10 w-full max-w-md p-8 rounded-2xl bg-[#111]/80 backdrop-blur-xl border border-gray-800 shadow-2xl">
-        <h2 className="text-3xl font-semibold mb-2 text-center">
+        <h2 className="text-3xl font-semibold text-center mb-2">
           Welcome Back
         </h2>
-        <p className="text-sm text-gray-400 mb-8 text-center">
+        <p className="text-sm text-gray-400 text-center mb-8">
           Sign in to continue
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+
           {/* Email */}
           <div>
             <label className="text-sm text-gray-400">Email</label>
@@ -122,13 +133,13 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full pl-10 pr-4 py-2 bg-[#0a0a0a] border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full pl-10 pr-4 py-2 bg-[#0a0a0a] border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   errors.email ? 'border-red-500' : 'border-gray-700'
                 }`}
               />
             </div>
             {errors.email && (
-              <p className="text-sm text-red-400 mt-1">{errors.email}</p>
+              <p className="text-red-400 text-sm mt-1">{errors.email}</p>
             )}
           </div>
 
@@ -142,24 +153,24 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-full pl-10 pr-10 py-2 bg-[#0a0a0a] border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full pl-10 pr-10 py-2 bg-[#0a0a0a] border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   errors.password ? 'border-red-500' : 'border-gray-700'
                 }`}
               />
               <button
                 type="button"
-                onClick={() => setShowPassword((p) => !p)}
+                onClick={() => setShowPassword((prev) => !prev)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"
               >
-                {showPassword ? <EyeOff /> : <Eye />}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
             {errors.password && (
-              <p className="text-sm text-red-400 mt-1">{errors.password}</p>
+              <p className="text-red-400 text-sm mt-1">{errors.password}</p>
             )}
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
@@ -169,11 +180,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 : 'bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/30'
             }`}
           >
-            {loading ? 'Signing in…' : 'Sign In'
+            {loading ? 'Signing in…' : 'Sign In'}
           </button>
 
           <p className="text-center text-sm text-gray-400">
-            Don’t have an account?{' '}
+            Don't have an account?{' '}
             <Link to="/register" className="text-blue-400 hover:underline">
               Sign Up
             </Link>

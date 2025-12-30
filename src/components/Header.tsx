@@ -104,52 +104,7 @@ export default function Navigation() {
         )}
       </div>
 
-      {/* Styles */}
-      <style jsx>{`
-        .nav-link {
-          position: relative;
-          font-size: 0.875rem;
-          color: #d1d5db;
-          transition: color 0.25s ease;
-        }
 
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: -6px;
-          width: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #3b82f6, #60a5fa);
-          transition: width 0.3s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-          color: #ffffff;
-          text-shadow: 0 0 14px rgba(96, 165, 250, 0.9);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-          width: 100%;
-          box-shadow: 0 0 12px rgba(96, 165, 250, 0.9);
-        }
-
-        .mobile-link {
-          display: block;
-          font-size: 0.875rem;
-          color: #d1d5db;
-          padding: 0.25rem 0;
-          transition: color 0.25s ease;
-        }
-
-        .mobile-link.active,
-        .mobile-link:hover {
-          color: #ffffff;
-          text-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
-        }
-      `}</style>
     </nav>
   );
 }

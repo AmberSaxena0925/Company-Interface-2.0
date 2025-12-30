@@ -10,7 +10,7 @@ import Pricing from './components/Pricing';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import Login from './components/Login'
+import Login from './components/Login';
 
 function App() {
   return (
