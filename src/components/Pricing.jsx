@@ -86,7 +86,9 @@ export default function Pricing() {
                     <div className="bg-blue-500/10 rounded-full p-1 mt-0.5">
                       <Check size={14} className="text-blue-400" />
                     </div>
-                    <span className="text-gray-300 text-sm">{feature}</span>
+                    <span className="text-gray-300 text-sm">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>

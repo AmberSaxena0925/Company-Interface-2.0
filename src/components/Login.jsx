@@ -1,47 +1,24 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 
-const backendURL = import.meta.env.VITE_BACKEND_URL as string;
+const backendURL = import.meta.env.VITE_BACKEND_URL;
 
-interface LoginFormData {
-  email: string;
-  password: string;
-}
-
-interface LoginErrors {
-  email?: string;
-  password?: string;
-}
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  company?: string;
-  phone?: string;
-  createdAt: string;
-}
-
-interface LoginPageProps {
-  onLogin?: (user: User) => void;
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
+export default function LoginPage({ onLogin }) {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState<LoginFormData>({
+  const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState<LoginErrors>({});
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   /* ---------------------- Validation ---------------------- */
-  const validateForm = (): boolean => {
-    const newErrors: LoginErrors = {};
+  const validateForm = () => {
+    const newErrors = {};
 
     if (!formData.email) {
       newErrors.email = 'Email is required';
@@ -60,7 +37,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   };
 
   /* ---------------------- Submit ---------------------- */
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -81,7 +58,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       }
 
       localStorage.setItem('token', data.token);
-      onLogin?.(data.user);
+      if (onLogin) onLogin(data.user);
 
       navigate('/contact');
     } catch {
@@ -92,12 +69,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   };
 
   /* ---------------------- Input Change ---------------------- */
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    if (errors[name as keyof LoginErrors]) {
+    if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
@@ -184,7 +161,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           </button>
 
           <p className="text-center text-sm text-gray-400">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link to="/register" className="text-blue-400 hover:underline">
               Sign Up
             </Link>
@@ -193,6 +170,4 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       </div>
     </div>
   );
-};
-
-export default LoginPage;
+}

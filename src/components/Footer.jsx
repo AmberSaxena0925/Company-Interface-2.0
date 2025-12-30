@@ -2,7 +2,10 @@ import { ArrowRight, Twitter, Linkedin, Github, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative bg-gradient-to-b from-[#111111] to-[#0a0a0a] border-t border-gray-800 overflow-hidden">
+    <footer
+      id="contact"
+      className="relative bg-gradient-to-b from-[#111111] to-[#0a0a0a] border-t border-gray-800 overflow-hidden"
+    >
       <div className="absolute bottom-0 left-0 right-0 text-[20vw] font-bold text-gray-900/20 text-center whitespace-nowrap pointer-events-none">
         FORGESURGE
       </div>
@@ -10,13 +13,20 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
-            <div className="text-white font-bold text-2xl mb-4">FORGE SURGE</div>
+            <div className="text-white font-bold text-2xl mb-4">
+              FORGE SURGE
+            </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Building scalable digital solutions that drive growth. We turn your vision into reality with cutting-edge technology and proven expertise.
+              Building scalable digital solutions that drive growth. We turn
+              your vision into reality with cutting-edge technology and proven
+              expertise.
             </p>
             <button className="group bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-full transition-all flex items-center gap-2">
               Book a Free Consultation
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={18}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </button>
           </div>
 
@@ -108,6 +118,7 @@ export default function Footer() {
             >
               <Twitter size={18} />
             </a>
+
             <a
               href="https://linkedin.com"
               target="_blank"
@@ -116,6 +127,7 @@ export default function Footer() {
             >
               <Linkedin size={18} />
             </a>
+
             <a
               href="https://github.com"
               target="_blank"
@@ -124,6 +136,7 @@ export default function Footer() {
             >
               <Github size={18} />
             </a>
+
             <a
               href="mailto:hello@nexatech.com"
               className="bg-[#1a1a1a] hover:bg-[#252525] border border-gray-800 hover:border-gray-700 text-gray-400 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all"
