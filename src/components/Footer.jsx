@@ -106,7 +106,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-gray-500 text-sm">
-            © 2024 NexaTech. All rights reserved.
+            © 2026 FORGESURGE. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
